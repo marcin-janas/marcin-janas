@@ -1,7 +1,7 @@
 ```go
 package main
 
-import "fmt"
+import "log"
 
 type Gopher struct {
 	Name     string
@@ -9,13 +9,19 @@ type Gopher struct {
 	Language string
 }
 
+var RecoverGopher = func() {
+	recover()
+}
+
 func main() {
+	defer RecoverGopher()
+
 	me := Gopher{
 		Name:     "Marcin Janas",
 		Editor:   "Neovim",
 		Language: "Go",
 	}
 
-	fmt.Println(me)
+	log.Panic(me)
 }
 ```
