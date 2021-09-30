@@ -1,20 +1,18 @@
 ```go
 package main
 
-import "log"
-
 type Gopher struct {
 	Name     string
 	Editor   string
 	Language string
 }
 
-var RecoverGopher = func() {
+var SaveGopher = func() {
 	recover()
 }
 
 func main() {
-	defer RecoverGopher()
+	defer SaveGopher()
 
 	me := Gopher{
 		Name:     "Marcin Janas",
@@ -22,6 +20,6 @@ func main() {
 		Language: "Go",
 	}
 
-	log.Panic(me)
+	panic(me)
 }
 ```
