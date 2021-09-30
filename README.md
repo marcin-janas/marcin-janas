@@ -1,16 +1,21 @@
-### Hi there 👋
+```go
+package main
 
-<!--
-**marcin-janas/marcin-janas** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+import "fmt"
 
-Here are some ideas to get you started:
+type Gopher struct{
+	Name     string
+	Editor   string
+	Language string
+}
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+func main() {
+	me := Gopher{
+		Name:     "Marcin Janas",
+		Editor:   "Neovim",
+		Language: "Go",
+	}
+
+	fmt.Println(me)
+}
+```
