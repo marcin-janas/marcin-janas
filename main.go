@@ -2,8 +2,9 @@ package main
 
 type Gopher struct {
 	Name     string
-	Editor   string
-	Language string
+	GitHub   string
+	LinkedIn string
+	Skills   []string
 }
 
 var SaveGopher = func() {
@@ -15,8 +16,11 @@ func main() {
 
 	me := Gopher{
 		Name:     "Marcin Janas",
-		Editor:   "Neovim",
-		Language: "Go",
+		GitHub:   "https://github.com/marcin-janas",
+		LinkedIn: "https://www.linkedin.com/in/marcin-janas",
+		Skills: []string{
+			"Go", "Neovim", "Terraform", "AWS", "Kubernetes",
+		},
 	}
 
 	panic(me)
