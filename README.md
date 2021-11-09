@@ -1,29 +1,30 @@
 ```go
 package main
 
-type Gopher struct {
-	Name     string
-	GitHub   string
-	LinkedIn string
-	Skills   []string
-}
+type Gopher string
 
-var SaveGopher = func() {
-	recover()
+func (g Gopher) Save() {
+	for _, s := range []string{
+		"https://github.com/",
+		"https://www.linkedin.com/in/",
+	} {
+		println(s + string(g))
+	}
 }
 
 func main() {
-	defer SaveGopher()
-
-	me := Gopher{
-		Name:     "Marcin Janas",
-		GitHub:   "https://github.com/marcin-janas",
-		LinkedIn: "https://www.linkedin.com/in/marcin-janas",
-		Skills: []string{
-			"Go", "Neovim", "Terraform", "AWS", "Kubernetes",
-		},
-	}
+	me := Gopher("marcin-janas")
+	defer func() {
+		recover().(Gopher).Save()
+	}()
 
 	panic(me)
 }
+```
+
+```sh
+$ make
+go run main.go
+https://github.com/marcin-janas
+https://www.linkedin.com/in/marcin-janas
 ```
