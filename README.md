@@ -23,8 +23,7 @@ func main() {
 ```
 
 ```sh
-$ make
-go run main.go
-https://github.com/marcin-janas
-https://www.linkedin.com/in/marcin-janas
+$ go run main.go
 ```
+[https://github.com/marcin-janas](https://github.com/marcin-janas)
+[https://www.linkedin.com/in/marcin-janas](https://www.linkedin.com/in/marcin-janas)
