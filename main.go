@@ -1,20 +1,20 @@
 package main
 
-type Gopher string
+type Gopher struct {
+	Name string
+}
 
-func (g Gopher) Save() {
-	for _, s := range []string{
-		"https://github.com/",
-		"https://www.linkedin.com/in/",
-	} {
-		println(s + string(g))
-	}
+func (g Gopher) TryNotToPanic() string {
+	return g.Name
 }
 
 func main() {
-	me := Gopher("marcin-janas")
+	me := Gopher{"Marcin Janas"}
+
 	defer func() {
-		recover().(Gopher).Save()
+		if g, ok := recover().(Gopher); ok {
+			print(g.TryNotToPanic())
+		}
 	}()
 
 	panic(me)
