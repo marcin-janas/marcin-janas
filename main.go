@@ -4,18 +4,16 @@ type Gopher struct {
 	Name string
 }
 
-func (g Gopher) TryNotToPanic() string {
-	return g.Name
+func (g Gopher) TryNotToPanic() {
+	if me, ok := recover().(Gopher); ok && me.Name == g.Name {
+		print("this is fine")
+	}
 }
 
 func main() {
 	me := Gopher{"Marcin Janas"}
 
-	defer func() {
-		if g, ok := recover().(Gopher); ok {
-			print(g.TryNotToPanic())
-		}
-	}()
+	defer me.TryNotToPanic()
 
 	panic(me)
 }
