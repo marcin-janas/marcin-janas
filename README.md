@@ -1,20 +1,21 @@
 ```go
 package main
 
-type Gopher struct {
-	Name string
-}
+type gopher struct{}
 
-func (g Gopher) TryNotToPanic() {
-	if me, ok := recover().(Gopher); ok && me.Name == g.Name {
-		print("this is fine")
+func (g *gopher) selfRecover() {
+	var self bool
+
+	if me, ok := recover().(*gopher); ok {
+		self = me == g
 	}
+
+	print(self)
 }
 
 func main() {
-	me := Gopher{"Marcin Janas"}
-
-	defer me.TryNotToPanic()
+	me := &gopher{}
+	defer me.selfRecover()
 
 	panic(me)
 }
