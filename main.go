@@ -2,19 +2,17 @@ package main
 
 type gopher struct{}
 
-func (g *gopher) selfRecover() {
-	var self bool
-
-	if me, ok := recover().(*gopher); ok {
-		self = me == g
+func (g *gopher) selfRecover() (r bool) {
+	if b, ok := recover().(*gopher); ok {
+		r = g == b
 	}
 
-	print(self)
+	return
 }
 
 func main() {
-	me := &gopher{}
-	defer me.selfRecover()
+	var g gopher
+	defer g.selfRecover()
 
-	panic(me)
+	panic(&g)
 }
